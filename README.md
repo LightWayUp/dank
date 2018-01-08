@@ -1,3 +1,0 @@
-# :^)
-ou yez
-whats this?
