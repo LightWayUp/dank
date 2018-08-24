@@ -1,21 +1,77 @@
-<html>
-<style>
-html, body {
-    height: 100%;
-    margin: 0;
-}
+<!--
+MIT License
 
-.gif-container {
-  background: url("gif.gif") center;
-  background-size: 30%;
+Copyright (c) 2018 vanished
 
-  height: 100%;
-}
-</style>
-<body>
-<audio autoplay loop >
-<source src="jemoeder.ogg" type="audio/ogg">
-</audio>
-<div class="gif-container"></div>
-</body>
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dank</title>
+        <meta name="description" content="ou yez">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="https://avatars0.githubusercontent.com/u/32491163?s=460&v=4">
+        <link rel="license" type="text/html" href="https://github.com/VanishedApps/dank/blob/master/LICENSE">
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            div {
+                height: inherit;
+                margin: 10px;
+                padding: inherit;
+            }
+            
+            .gif-container {
+                background: url("https://raw.githubusercontent.com/VanishedApps/dank/master/Je%20Moeder.gif") center;
+                background-size: 33.3%;
+                height: inherit;
+                margin: 0;
+                padding: 0;
+            }
+
+            p {
+                margin: 0;
+                padding: 0;
+            }
+
+            .hidden {
+                display: none !important;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hidden">
+            <p>Modern browsers sometimes block autoplay, sorry :(.</p>
+        </div>
+        <audio autoplay loop>
+            <source src="https://raw.githubusercontent.com/VanishedApps/dank/master/Je%20Moeder.ogg" type="audio/ogg">
+            <div>
+                <p>Sorry, your browser doesn't support HTML5 audio playing.</p>
+            </div>
+        </audio>
+        <div class="gif-container"></div>
+    </body>
 </html>
