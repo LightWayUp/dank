@@ -19,20 +19,36 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 * SOFTWARE.
 */
-var shouldAlert = true;
+
+/*
+* Created by LightWayUp on September 24th 2018
+*/
+
+var shouldAlert = true; // If audio does not play, alert isn't cancelled
 const audioElement = document.getElementById("autoplay");
 const string = "Your internet browser doesn't seem to support or allow audio autoplay.\nOnly half of the dankness for you, sorry :(!";
 
+/*
+* If audio plays, cancel the alert.
+* This is triggered by the "ontimeupdate" event.
+*/
 function cancelAlert() {
-    shouldAlert = false;
-    removeAttrForAudioElement();
+    shouldAlert = false; // Cancel the alert
+    removeAttrForAudioElement(); // Stop listening to events
 }
 
+/*
+* This is triggered by the "oncanplaythrough" event.
+* Once the entire audio track can play, countdown timer of 0.5 second is set.
+* If autoplay is available, audio should start playing in less than 0.5 second,
+* triggering the cancelAlert function.
+* If autoplay is unavailable, shouldAlert stays true, and alert dialog is shown.
+*/
 function prepareAlert() {
-    setTimeout(function() {
-        if (shouldAlert) {
-            window.alert(string);
-            removeAttrForAudioElement();
+    setTimeout(function() { // Audio track is fully loaded, wait for 0.5 second for it to play
+        if (shouldAlert) { // After the countdown, it's still not playing
+            window.alert(string); // Show the alert
+            removeAttrForAudioElement(); // Stop listening to events
         }
     }, 500);
 }
