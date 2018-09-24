@@ -25,6 +25,7 @@
 */
 
 var shouldAlert = true; // If audio does not play, alert isn't cancelled
+var prepareAlertCalled = false; // prepareAlert has not been called yet
 const audioElement = document.getElementById("autoplay");
 const string = "Your internet browser doesn't seem to support or allow audio autoplay.\nOnly half of the dankness for you, sorry :(!";
 
@@ -45,12 +46,15 @@ function cancelAlert() {
 * If autoplay is unavailable, shouldAlert stays true, and alert dialog is shown.
 */
 function prepareAlert() {
-    setTimeout(function() { // Audio track is fully loaded, wait for 0.5 second for it to play
-        if (shouldAlert) { // After the countdown, it's still not playing
-            window.alert(string); // Show the alert
-            removeAttrForAudioElement(); // Stop listening to events
-        }
-    }, 500);
+    if (!prepareAlertCalled) { // If prepareAlert has not been called yet...
+        prepareAlertCalled = true; // prepareAlert is called now
+        setTimeout(function() { // Audio track is fully loaded, wait for 0.5 second for it to play
+            if (shouldAlert) { // If after the countdown, it's still not playing...
+                window.alert(string); // Show the alert
+                removeAttrForAudioElement(); // Stop listening to events
+            }
+        }, 500);
+    }
 }
 
 function removeAttrForAudioElement() {
