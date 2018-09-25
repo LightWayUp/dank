@@ -36,43 +36,12 @@ SOFTWARE.
         <meta property="og:image:alt" content="Dank"/>
         <link rel="icon" type="image/png" href="https://avatars0.githubusercontent.com/u/32491163">
         <link rel="license" type="text/html" href="https://github.com/VanishedApps/dank/blob/master/LICENSE">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
-        <style>
-            html, body {
-                height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-
-            div {
-                height: inherit;
-                margin: 10px;
-                padding: inherit;
-            }
-
-            .gif-container {
-                background: url("https://vanishedapps.github.io/dank/Je%20Moeder.gif") center;
-                background-size: 33.3%;
-            }
-
-            p {
-                font-family: "Noto Sans", sans-serif;
-                margin: 0;
-                padding: 0;
-            }
-
-            a {
-                display: block;
-                height: 100%;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Sans">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <script src="check-autoplay.js"></script>
     </head>
-    <body>
-        <!--Sorry, some modern browsers block autoplay.-->
-        <audio autoplay loop>
+    <body onload="prepareAlert()">
+        <audio autoplay loop id="autoplay" oncanplaythrough="prepareAlert()" ontimeupdate="cancelAlert()">
             <source src="https://vanishedapps.github.io/dank/Je%20Moeder.ogg" type="audio/ogg">
             <div>
                 <p>Sorry, your browser doesn't support HTML5 audio playing.</p>
