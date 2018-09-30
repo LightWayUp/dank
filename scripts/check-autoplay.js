@@ -26,8 +26,8 @@
 
 var shouldAlert = true; // If audio does not play, alert isn't cancelled
 var prepareAlertCalled = false; // prepareAlert has not been called yet
-const audioElement = document.getElementById("autoplay");
-const string = "Your internet browser doesn't seem to support or allow audio autoplay.\nOnly half of the dankness for you, sorry :(!";
+var audioElement;
+const string = "Your internet browser doesn't seem to support or allow audio autoplay.\nOnly half of the dankness for you, sorry \uD83D\uDE26!";
 
 /*
 * If audio plays, cancel the alert.
@@ -36,6 +36,18 @@ const string = "Your internet browser doesn't seem to support or allow audio aut
 function cancelAlert() {
     shouldAlert = false; // Cancel the alert
     removeAttrForAudioElement(); // Stop listening to events
+}
+
+/*
+* Get the audio element from DOM.
+*/
+function getAudioElement() {
+    const audioElement0 = document.getElementsByClassName("autoplay")[0];
+    if (typeof audioElement0 === "undefined") {
+        throw "Can not find element with class name \"autoplay\"!";
+    } else {
+        audioElement = audioElement0;
+    }
 }
 
 /*
@@ -48,15 +60,19 @@ function cancelAlert() {
 function prepareAlert() {
     if (!prepareAlertCalled) { // If prepareAlert has not been called yet...
         prepareAlertCalled = true; // prepareAlert is called now
+        getAudioElement();
         setTimeout(function() { // Audio track is fully loaded, wait for 0.5 second for it to play
             if (shouldAlert) { // If after the countdown, it's still not playing...
-                window.alert(string); // Show the alert
+                alert(string); // Show the alert
                 removeAttrForAudioElement(); // Stop listening to events
             }
         }, 500);
     }
 }
 
+/*
+* Remove listeners, freeing some resource.
+*/
 function removeAttrForAudioElement() {
     audioElement.removeAttribute("oncanplaythrough");
     audioElement.removeAttribute("ontimeupdate");
