@@ -20,60 +20,119 @@
 * SOFTWARE.
 */
 
-/*
-* Created by LightWayUp on September 24th 2018
-*/
+/**
+ * @author LightWayUp
+ */
 
-var shouldAlert = true; // If audio does not play, alert isn't cancelled
-var prepareAlertCalled = false; // prepareAlert has not been called yet
+/**
+ * A boolean value to determine if alert dialog should be shown.
+ * If audio starts playing automatically, {@link #cancelAlert} is called,
+ * setting this value to "false".
+ * 
+ * @default true
+ * @type {boolean}
+ */
+var shouldAlert = true;
+
+/**
+ * A boolean value to determine if {@link #prepareAlert} has been called.
+ * The mentioned method is triggered by the "oncanplaythrough" event from audio element.
+ * As the event seems to fire multiple times, this value allows for checking if the
+ * method was previously called. Upon method call, this is set to "true".
+ * 
+ * @default false
+ * @type {boolean}
+ */
+var isPrepareAlertCalled = false;
+
+/**
+ * An object representing the audio element in HTML DOM.
+ * This is initialized in {@link #initializeAudioElement} function.
+ */
 var audioElement;
-const string = "Your internet browser doesn't seem to support or allow audio autoplay.\nOnly half of the dankness for you, sorry \uD83D\uDE26!";
 
-/*
-* If audio plays, cancel the alert.
-* This is triggered by the "ontimeupdate" event.
-*/
+/**
+ * The alert message seen if the alert dialog is shown.
+ * @constant
+ * @type {string}
+ * @default
+ */
+const MESSAGE = "Your internet browser doesn't seem to support or allow audio autoplay.\nOnly half of the dankness for you, sorry \uD83D\uDE26!";
+
+/**
+ * Cancel the alert by setting {@link #shouldAlert} to "false",
+ * after being triggered by the "ontimeupdate" event.
+ * This also calls {@link #removeAttrForAudioElement} to remove attributes
+ * for listening to events from the audio element.
+ * @listens ontimeupdate
+ */
 function cancelAlert() {
-    shouldAlert = false; // Cancel the alert
-    removeAttrForAudioElement(); // Stop listening to events
+    shouldAlert = false;
+    removeAttrForAudioElement();
 }
 
-/*
-* Get the audio element from DOM.
-*/
-function getAudioElement() {
-    const audioElement0 = document.getElementsByClassName("autoplay")[0];
-    if (typeof audioElement0 === "undefined") {
-        throw "Can not find element with class name \"autoplay\"!";
+/**
+ * Get the "audio" element from DOM and initialize {@link #audioElement}.
+ */
+function initializeAudioElement() {
+    // Get all elements with "audio" tag from DOM as an array
+    const audioElements = document.getElementsByTagName("audio");
+    // Check if there are any such element
+    if (audioElements.length === 0) {
+        // None is found as array doesn't contain anything
+        console.log("Can not find element with tag name \"audio\"!");
     } else {
-        audioElement = audioElement0;
+        // Initialize the audioElement object
+        // Index is 0 as there should be only one audio element
+        audioElement = audioElements[0];
     }
 }
 
-/*
-* This is triggered by the "oncanplaythrough" event.
-* Once the entire audio track can play, countdown timer of 0.5 second is set.
-* If autoplay is available, audio should start playing in less than 0.5 second,
-* triggering the cancelAlert function.
-* If autoplay is unavailable, shouldAlert stays true, and alert dialog is shown.
-*/
+/**
+ * Start the timeout timer. This is triggered by the "oncanplaythrough" event.
+ * If no audio is playing after the 1 second timeout, the alert dialog is shown,
+ * notifying the site visitor that autoplay for audio is unavailable.
+ * 
+ * Once the entire audio track can play through without buffering,
+ * the "oncanplaythrough" event is fired. This function is then called.
+ * As the event seems to fire multiple times, a check is first performed
+ * to see if this was previously called, by using {@link #isPrepareAlertCalled}.
+ * If not, it initializes {@link #audioElement} with {@link #initializeAudioElement}.
+ * Then, it starts a timeout of 1000 milliseconds. Upon timeout, it checks
+ * {@link #shouldAlert} to determine if alert dialog should be shown.
+ * This also calls {@link #removeAttrForAudioElement} to remove attributes
+ * for listening to events from the audio element.
+ * @listens oncanplaythrough
+ */
 function prepareAlert() {
-    if (!prepareAlertCalled) { // If prepareAlert has not been called yet...
-        prepareAlertCalled = true; // prepareAlert is called now
-        getAudioElement();
-        setTimeout(function() { // Audio track is fully loaded, wait for 0.5 second for it to play
-            if (shouldAlert) { // If after the countdown, it's still not playing...
-                alert(string); // Show the alert
-                removeAttrForAudioElement(); // Stop listening to events
+    // Check if this function is called before
+    if (!isPrepareAlertCalled) {
+        // It had never been called, now set isPrepareAlertCalled to true
+        isPrepareAlertCalled = true;
+        // Initialize audioElement
+        initializeAudioElement();
+        // Set the 1000 milliseconds timeout as audio track is fully loaded
+        setTimeout(function() {
+            // Check if audio is already playing
+            if (shouldAlert) {
+                // No audio is playing, show the alert dialog
+                alert(MESSAGE);
+                // Stop listening to events
+                removeAttrForAudioElement();
             }
-        }, 500);
+        }, 1000);
     }
 }
 
-/*
-* Remove listeners, freeing some resource.
-*/
+/**
+ * Remove event listeners for both "oncanplaythrough" and "ontimeupdate" events
+ * from the audio element to free up system resource.
+ * If {@link #audioElement} is never initialized successfully,
+ * this function does nothing.
+ */
 function removeAttrForAudioElement() {
-    audioElement.removeAttribute("oncanplaythrough");
-    audioElement.removeAttribute("ontimeupdate");
+    if (typeof audioElement !== "undefined") {
+        audioElement.removeAttribute("oncanplaythrough");
+        audioElement.removeAttribute("ontimeupdate");
+    }
 }
