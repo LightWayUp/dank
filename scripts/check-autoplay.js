@@ -49,6 +49,7 @@ var isPrepareAlertCalled = false;
 /**
  * An object representing the audio element in HTML DOM.
  * This is initialized in {@link #initializeAudioElement} function.
+ * @type {Element}
  */
 var audioElement;
 
