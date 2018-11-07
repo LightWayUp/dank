@@ -20,7 +20,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
         <title>Dank</title>
@@ -40,9 +40,8 @@ SOFTWARE.
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans">
         <link rel="stylesheet" href="styles/stylesheet.css">
     </head>
-    <body onload="prepareAlert()">
-        <audio autoplay loop oncanplaythrough="prepareAlert()" ontimeupdate="cancelAlert()">
-            <source src="Media/Je%20Moeder.ogg" type="audio/ogg">
+    <body onload="playAudio()">
+        <audio src="Media/Je%20Moeder.ogg" loop ontimeupdate="cancelAlert()">
             <div>
                 <p>Sorry, your browser doesn't support HTML5 audio playing.</p>
             </div>
