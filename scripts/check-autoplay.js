@@ -58,9 +58,7 @@ const MESSAGE = "Your internet browser doesn't seem to support or allow audio au
  * @type {function}
  * @listens onerror
  */
-window.onerror = function(message, source, lineNumber, columnNumber, error) {
-    console.log(`An error occured, please report this at https://github.com/VanishedApps/dank/issues/new .\n\nFull details, copy and paste into issue description:\n\n${error.stack}`);
-}
+window.onerror = (message, source, lineNumber, columnNumber, error) => console.log(`An error occured, please report this at https://github.com/VanishedApps/dank/issues/new .\n\nFull details, copy and paste into issue description:\n\n${error.stack}`);
 
 /**
  * Cancel the alert by setting {@link #shouldAlert} to "false",
@@ -85,14 +83,8 @@ function playAudio() {
     const promise = audioElement.play();
     // Check if browser returns a Promise
     if (promise !== undefined) {
-        // Check if audio can start playing
-        promise.then(
-            // Audio can start playing, do nothing
-            function() {},
-            // Audio can't start playing, show the alert dialog
-            function(reason) {
-                showAlert(reason.toString());
-        });
+        // Check if audio can start playing, if not then show the alert dialog
+        promise.catch(reason => showAlert(reason.toString()));
     } else {
         // Browser does not return a Promise, use hacky fallback method
         // to determine if audio is playing
@@ -130,7 +122,7 @@ function initializeAudioElement() {
  * @listens oncanplaythrough
  */
 function prepareAlert() {
-    setTimeout(function() {
+    setTimeout(() => {
         // Check if audio is already playing
         if (shouldAlert) {
             // No audio is playing, show the alert dialog
@@ -164,7 +156,7 @@ function showAlert(reason) {
  * this function does nothing.
  */
 function removeAttrForAudioElement() {
-    if (typeof audioElement !== "undefined") {
+    if (audioElement !== undefined) {
         audioElement.removeAttribute("ontimeupdate");
     }
 }
