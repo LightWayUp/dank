@@ -58,7 +58,7 @@ const MESSAGE = "Your internet browser doesn't seem to support or allow audio au
  * @type {function}
  * @listens onerror
  */
-window.onerror = (message, source, lineNumber, columnNumber, error) => console.log(`An error occured, please report this at https://github.com/VanishedApps/dank/issues/new .\n\nFull details, copy and paste into issue description:\n\n${error.stack}`);
+window.onerror = (message, source, lineNumber, columnNumber, error) => console.log(`An error occured, please report this at https://github.com/VanishedApps/dank/issues/new .\n\nFull details, copy and paste into issue description:\n\n${error.toString()}`);
 
 /**
  * Cancel the alert by setting {@link #shouldAlert} to "false",
@@ -142,7 +142,7 @@ function showAlert(reason) {
     if (typeof reason !== "string") {
         throw new TypeError("Reason must be a string!");
     }
-    var alertMessage = MESSAGE;
+    let alertMessage = MESSAGE;
     if (reason !== undefined && reason !== null) {
         alertMessage += `\n\nReason:\n${reason}`;
     }
