@@ -39,7 +39,7 @@ body {
     width: 100%;
     height: 100%;
     background: url("../Media/Je%20Moeder.gif") center;
-    background-size: 33.3%;
+    background-size: calc(100% / 3);
 }
 
 div {
@@ -51,7 +51,7 @@ p {
     line-height: 1.5;
 }
 
-input {
+button {
     margin-top: 15px;
     padding: 10px;
     font-size: 1rem;
@@ -63,7 +63,7 @@ input {
     transition: background-color 0.3s ease-in-out;
 }
 
-input:hover,
-input:active {
+button:hover,
+button:active {
     background-color: #b63d1e;
 }

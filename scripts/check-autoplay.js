@@ -28,8 +28,7 @@
 /**
  * A boolean value to determine if alert dialog should be shown.
  * Only used when the fallback method {@link #prepareAlert} is called.
- * If audio starts playing automatically, {@link #cancelAlert} is called,
- * setting this value to "false".
+ * If audio starts playing automatically, this value is set to "false".
  * 
  * @default true
  * @type {boolean}
@@ -58,18 +57,7 @@ const MESSAGE = "Your internet browser doesn't seem to support or allow audio au
  * @type {function}
  * @listens onerror
  */
-window.onerror = function(message, source, lineNumber, columnNumber, error) {
-    console.log(`An error occured, please report this at https://github.com/VanishedApps/dank/issues/new .\n\nFull details, copy and paste into issue description:\n\n${error.stack}`);
-}
-
-/**
- * Cancel the alert by setting {@link #shouldAlert} to "false",
- * after being triggered by the "ontimeupdate" event.
- * @listens ontimeupdate
- */
-function cancelAlert() {
-    shouldAlert = false;
-}
+window.onerror = (message, source, lineNumber, columnNumber, error) => console.log(`An error occured, please report this at https://github.com/VanishedApps/dank/issues/new .\n\nFull details, copy and paste into issue description:\n\n${error.toString()}`);
 
 /**
  * Attempt to play audio when the page is loaded.
@@ -79,20 +67,14 @@ function cancelAlert() {
  * fallback method {@link #prepareAlert} is used.
  * @listens onload
  */
-function playAudio() {
+document.body.onload = () => {
     // Load audio element
     initializeAudioElement();
     const promise = audioElement.play();
     // Check if browser returns a Promise
     if (promise !== undefined) {
-        // Check if audio can start playing
-        promise.then(
-            // Audio can start playing, do nothing
-            function() {},
-            // Audio can't start playing, show the alert dialog
-            function(reason) {
-                showAlert(reason.toString());
-        });
+        // Check if audio can start playing, if not then show the alert dialog
+        promise.catch(reason => showAlert(reason.toString()));
     } else {
         // Browser does not return a Promise, use hacky fallback method
         // to determine if audio is playing
@@ -105,16 +87,15 @@ function playAudio() {
  * @throws {Error} Throws an Error if the correct audio element can't be found.
  */
 function initializeAudioElement() {
-    // Get all elements with "audio" tag from DOM as an array
-    const audioElements = document.getElementsByTagName("audio");
-    // Check if there is exactly 1 audio element
-    if (audioElements.length !== 1) {
-        // None or more than one are found
+    // Get element with "audio" tag from DOM
+    audioElement = document.querySelector("audio");
+    // Check if the audio element exists
+    if (audioElement === null) {
+        // None is found
         throw new Error("Can not find the correct element with tag name \"audio\"!");
     }
-    // Initialize the audioElement object
-    // Index is 0 as there is only one audio element
-    audioElement = audioElements[0];
+    // Add event listener
+    audioElement.ontimeupdate = () => shouldAlert = false;
 }
 
 /**
@@ -130,7 +111,7 @@ function initializeAudioElement() {
  * @listens oncanplaythrough
  */
 function prepareAlert() {
-    setTimeout(function() {
+    setTimeout(() => {
         // Check if audio is already playing
         if (shouldAlert) {
             // No audio is playing, show the alert dialog
@@ -150,7 +131,7 @@ function showAlert(reason) {
     if (typeof reason !== "string") {
         throw new TypeError("Reason must be a string!");
     }
-    var alertMessage = MESSAGE;
+    let alertMessage = MESSAGE;
     if (reason !== undefined && reason !== null) {
         alertMessage += `\n\nReason:\n${reason}`;
     }
@@ -158,13 +139,13 @@ function showAlert(reason) {
 }
 
 /**
- * Remove event listeners for "ontimeupdate" event
+ * Remove event listener for "ontimeupdate" event
  * from the audio element to free up system resource.
  * If {@link #audioElement} is never initialized successfully,
  * this function does nothing.
  */
 function removeAttrForAudioElement() {
-    if (typeof audioElement !== "undefined") {
+    if (audioElement !== null) {
         audioElement.removeAttribute("ontimeupdate");
     }
 }
