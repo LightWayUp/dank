@@ -1,10 +1,10 @@
-# [Dank](https://vanishedapps.github.io/dank)
-[![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)](https://vanishedapps.github.io/dank) [![VanishedApps](https://img.shields.io/badge/owner-VanishedApps-44cc11.svg?longCache=true&style=flat-square)](https://github.com/VanishedApps) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
+# [Dank](https://vanishedvan.github.io/dank)
+[![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)](https://vanishedvan.github.io/dank) [![vanishedvan](https://img.shields.io/badge/owner-vanishedvan-44cc11.svg?longCache=true&style=flat-square)](https://github.com/vanishedvan) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
 
 ## License
 This project is licensed under [MIT License](/LICENSE).
 
-> Copyright (c) 2018 VanishedApps
+> Copyright (c) 2018-2019 vanishedvan
 > 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
