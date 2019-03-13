@@ -78,16 +78,16 @@ function initializeAudioElement() {
 
 /**
  * Show the alert dialog. Optionally, a reason can be included.
- * @param {string} reason The reason audio can not start playing automatically.
+ * @param {string|String} reason The reason audio can not start playing automatically.
  * @throws {TypeError} Throws a TypeError if type of reason is not string.
  */
 function showAlert(reason) {
-    if (typeof reason !== "string") {
+    if (!(typeof reason === "string" || reason instanceof String)) {
         throw new TypeError("Reason must be a string!");
     }
     let alertMessage = MESSAGE;
     if (reason != null) {
-        alertMessage += `\n\nReason:\n${reason}`;
+        alertMessage += `\n\nReason:\n${reason.valueOf()}`;
     }
     alert(alertMessage);
 }

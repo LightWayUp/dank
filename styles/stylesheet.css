@@ -31,7 +31,7 @@ body {
     height: 100%;
     font-size: 16px;
     font-family: "Noto Sans", sans-serif;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .gif-container {
