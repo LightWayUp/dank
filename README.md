@@ -1,5 +1,5 @@
 # [Dank](https://vanishedapps.github.io/dank)
-[![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)](https://vanishedapps.github.io/dank) [![VanishedApps](https://img.shields.io/badge/owner-VanishedApps-44cc11.svg?longCache=true&style=flat-square)](https://github.com/VanishedApps) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
+[![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)](https://vanishedapps.github.io/dank) [![vanishedvan](https://img.shields.io/badge/owner-vanishedvan-44cc11.svg?longCache=true&style=flat-square)](https://github.com/VanishedApps) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
 
 ## License
 This project is licensed under [MIT License](/LICENSE).
