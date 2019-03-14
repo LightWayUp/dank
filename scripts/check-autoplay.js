@@ -55,7 +55,7 @@ window.onerror = (message, source, lineNumber, columnNumber, error) => console.l
  * @function
  * @listens onload
  */
-document.body.onload = () => {
+window.onload = () => {
     // Load audio element
     initializeAudioElement();
     // Play audio and handle rejection
