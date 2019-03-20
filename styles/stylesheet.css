@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2018 VanishedApps
+* Copyright (c) 2018-2019 vanishedvan
 * 
 * Permission is hereby granted, free of charge, to any person obtaining a copy
 * of this software and associated documentation files (the "Software"), to deal
@@ -31,7 +31,7 @@ body {
     height: 100%;
     font-size: 16px;
     font-family: "Noto Sans", sans-serif;
-    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .gif-container {
