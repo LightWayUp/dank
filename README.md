@@ -1,4 +1,4 @@
-# [Dank](https://vanishedvan.github.io/dank)
+# [Dank](https://vanishedvan.github.io/dank/)
 [![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)](https://vanishedvan.github.io/dank) [![vanishedvan](https://img.shields.io/badge/owner-vanishedvan-44cc11.svg?longCache=true&style=flat-square)](https://github.com/vanishedvan) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
 
 ## License
