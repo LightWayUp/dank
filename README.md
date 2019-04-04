@@ -1,5 +1,5 @@
-# [Dank](https://vanishedvan.github.io/dank/)
-[![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)](https://vanishedvan.github.io/dank) [![vanishedvan](https://img.shields.io/badge/owner-vanishedvan-44cc11.svg?longCache=true&style=flat-square)](https://github.com/vanishedvan) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
+# [Dank][Dank website]
+[![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)][Dank website] [![vanishedvan](https://img.shields.io/badge/owner-vanishedvan-44cc11.svg?longCache=true&style=flat-square)](https://github.com/vanishedvan) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
 
 ## License
 This project is licensed under [MIT License](/LICENSE).
@@ -23,3 +23,5 @@ This project is licensed under [MIT License](/LICENSE).
 > LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 > OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 > SOFTWARE.
+
+[Dank website]: https://vanishedvan.github.io/dank/
