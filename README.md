@@ -1,5 +1,5 @@
 # [Dank][Dank website]
-[![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)][Dank website] [![vanishedvan](https://img.shields.io/badge/owner-vanishedvan-44cc11.svg?longCache=true&style=flat-square)](https://github.com/vanishedvan) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
+[![Really dank](https://img.shields.io/badge/really-dank-e34c26.svg?longCache=true&style=flat-square)][Dank website] [![vanishedvan](https://img.shields.io/badge/owner-vanishedvan-44cc11.svg?longCache=true&style=flat-square&logo=github)](https://github.com/vanishedvan) [![MIT License](https://img.shields.io/badge/license-MIT-0366d6.svg?longCache=true&style=flat-square)](/LICENSE)
 
 ## License
 This project is licensed under [MIT License](/LICENSE).
