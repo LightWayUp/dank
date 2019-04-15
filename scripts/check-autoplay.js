@@ -55,7 +55,7 @@ const REPOSITORY_REPRESENTATION = getRepository().representation;
  * @function
  * @listens onerror
  */
-window.onerror = (message, source, lineNumber, columnNumber, error) => console.log(`An error occured, please report this at https://github.com/${REPOSITORY_REPRESENTATION}/issues/new .\n\nFull details, copy and paste into issue description:\n\n${error}`);
+onerror = (message, source, lineNumber, columnNumber, error) => console.log(`An error occured, please report this at https://github.com/${REPOSITORY_REPRESENTATION}/issues/new .\n\nFull details, copy and paste into issue description:\n\n${error}`);
 
 /**
  * Attempt to play audio when the page is loaded.
@@ -63,7 +63,7 @@ window.onerror = (message, source, lineNumber, columnNumber, error) => console.l
  * @function
  * @listens onload
  */
-window.onload = () => {
+onload = () => {
     // Load audio element
     initializeAudioElement();
     // Play audio and handle rejection
@@ -104,7 +104,6 @@ function showAlert(reason) {
  * name of repository, and its representation.
  */
 function getRepository() {
-    const location = window.location;
     const owner = location.hostname.split(/\./gi)[0];
     const repository = location.pathname.split(/\//gi)[1];
     return {
